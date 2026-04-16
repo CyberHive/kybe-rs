@@ -2,7 +2,6 @@
 //!
 //! ByteArray used for exchange and encoding/decoding
 
-use rand::prelude::*;
 /// A struct representing an array of bytes
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct ByteArray {
@@ -26,8 +25,7 @@ impl ByteArray {
     /// Generate a ByteArray of size len filled with random values
     pub fn random(len: usize) -> Self {
         let mut data = vec![0; len];
-        let mut rng = rand::thread_rng();
-        rng.fill_bytes(&mut data);
+        rand::fill(&mut data[..]);
 
         Self { data }
     }
